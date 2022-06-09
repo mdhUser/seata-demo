@@ -1,0 +1,41 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: account-service
+  datasource:
+    url: jdbc:mysql://47.111.103.239:3306/seata_demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: Maxwell0326@$
+    driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    nacos:
+      server-addr: 47.111.103.239:8848
+mybatis-plus:
+  global-config:
+    db-config:
+      insert-strategy: not_null
+      update-strategy: not_null
+      id-type: auto
+logging:
+  level:
+    org.springframework.cloud.alibaba.seata.web: debug
+    cn.itcast: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+#seata
+seata:
+  registry:
+    type: nacos
+    nacos:
+      application: seata-tc-server
+      server-addr: 47.111.103.239:8848
+      namespace: ""
+      group: DEFAULT_GROUP
+      username: nacos
+      password: nacos
+  tx-service-group: seata-demo
+  service:
+    vgroup-mapping: # 事务组与cluster的映射关系
+      seata-demo: DEFAULT
+  data-source-proxy-mode: AT
