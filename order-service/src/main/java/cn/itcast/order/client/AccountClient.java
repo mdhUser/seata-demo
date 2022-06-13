@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @FeignClient("account-service")
 public interface AccountClient {
-
     @RequestMapping("/account/{userId}/{money}")
     void deduct(@PathVariable("userId") String userId, @PathVariable("money") Integer money);
 }

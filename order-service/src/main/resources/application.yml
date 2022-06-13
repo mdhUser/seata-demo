@@ -41,3 +41,10 @@ seata:
     vgroup-mapping: # 事务组与cluster的映射关系
       seata-demo: DEFAULT
   data-source-proxy-mode: AT
+#  设置feign超时时间
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
